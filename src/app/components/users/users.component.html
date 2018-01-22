@@ -43,7 +43,6 @@
           <label>Email</label>
           <input 
             #userEmail="ngModel"
-            email
             required
             pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
             [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
@@ -51,7 +50,7 @@
             [(ngModel)]="user.email" 
             class="form-control mb-3" 
             name="email">
-            <div [hidden]="!userEamil.errors?.pattern" class="invalid-feedback">
+            <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
                 Must be a valid Email
             </div>
           </div>
