@@ -1,10 +1,73 @@
-<h2>Users</h2>
 <button 
-  [disabled]="!enableAdd" 
-  class="btn btn-block btn-light mb-3"
-  (click)="addUser({firstName: 'Mary', lastName: 'Smith', isActive: true})">
-    Add New User
-  </button>
+  class="btn btn-dark mb-3"
+  (click)="showUserForm = !showUserForm">
+    Add User
+</button>
+
+<div class="card card-body mb-3" *ngIf="showUserForm">
+  <h2>Add User</h2>
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+          <label>First Name</label>
+          <input 
+            type="text" 
+            [(ngModel)]="user.firstName" 
+            class="form-control mb-3" 
+            name="firstName">
+      </div>
+
+      <div class="form-group">
+          <label>Last Name</label>
+          <input 
+            type="text" 
+            [(ngModel)]="user.lastName" 
+            class="form-control mb-3" 
+            name="lastName">
+      </div>
+
+      <div class="form-group">
+          <label>age</label>
+          <input 
+            type="number" 
+            [(ngModel)]="user.age" 
+            class="form-control mb-3" 
+            name="lastName">
+        </div>
+
+          <div class="form-group">
+              <label>Street Address</label>
+              <input 
+                type="text" 
+                [(ngModel)]="user.address.street" 
+                class="form-control mb-3" 
+                name="street">
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input 
+                  type="text" 
+                  [(ngModel)]="user.address.city" 
+                  class="form-control mb-3" 
+                  name="city">
+              </div>
+
+              <div class="form-group">
+                  <label>State</label>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="user.address.state" 
+                    class="form-control mb-3" 
+                    name="state">                  
+              </div>
+        <button 
+        [disabled]="user.firstName == '' || user.lastName == ''" 
+        class="btn btn-block btn-light mb-3"
+        (click)="addUser()">
+          Add New User
+        </button>
+  </form>
+</div>
 
 <ul 
   class="list-unstyled" 

@@ -10,10 +10,21 @@ import { User } from '../../models/User';
 
 export class UsersComponent implements OnInit {
   //properties
+  user: User = {
+    firstName: '',
+    lastName: '',
+    age: null,
+    address: {
+      street: '',
+      city: '',
+      state: ''
+    }
+  };
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = true;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  showUserForm: boolean = false;
   
   //methods
   constructor() { 
@@ -22,6 +33,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
 
+    //hard coded user array
     this.users = [
       {
         firstName: 'John',
@@ -60,13 +72,31 @@ export class UsersComponent implements OnInit {
         },
         isActive: true,
         registered: new Date('01/25/2018 10:30:00'),
-        hide: false
+        hide: true
       }
     ];
   }
 
-  addUser(user: User){
-    this.users.push(user);
+  //add user from from input
+  addUser(){
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
+
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: null,
+      address: {
+        street: '',
+        city: '',
+        state: ''
+      }
+    }
+  }
+
+  onSubmit(e){
+    e.preventDefault();
   }
 
 }
