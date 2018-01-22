@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { User } from '../../models/User';
-import { DataService } from '../../services/data.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -27,12 +27,12 @@ export class UsersComponent implements OnInit {
   data: any;
   
   //methods
-  constructor(private _dataService: DataService) { 
+  constructor(private _userService: UserService) { 
     
   }
 
   ngOnInit() {
-  this._dataService.getUsers().subscribe(users => {
+  this._userService.getUsers().subscribe(users => {
      this.users = users;
      this.loaded = true;
    });

@@ -5,7 +5,7 @@ import { of } from 'rxjs/Observable/of';
 import { User } from '../models/User';
 
 @Injectable()
-export class DataService {
+export class UserService {
   users: User[];
   data: Observable<any>
 
