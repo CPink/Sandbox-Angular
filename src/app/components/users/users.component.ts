@@ -13,13 +13,9 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstName: '',
     lastName: '',
-    age: null,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
+    email: ''
   };
+
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = true;
@@ -38,12 +34,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'John',
         lastName: 'Doe',
-        age: 70,
-        address: {
-            street: '50 Main St',
-            city: 'Boise',
-            state: 'ID'
-        },
+        email: 'John@gmail.com',
         isActive: true,
         registered: new Date('01/21/2018 08:30:00'),
         hide: true
@@ -51,12 +42,7 @@ export class UsersComponent implements OnInit {
         {
         firstName: 'Chance',
         lastName: 'Pinkerton',
-        age: 32,
-        address: {
-            street: '50 Main St',
-            city: 'Boise',
-            state: 'ID'
-        },
+        email: 'Chance@gmail.com',
         isActive: false,
         registered: new Date('01/18/2018 12:30:00'),
         hide: true
@@ -64,12 +50,7 @@ export class UsersComponent implements OnInit {
     {
       firstName: 'Shanell',
       lastName: 'Pinkerton',
-      age: 29,
-      address: {
-          street: '50 Main St',
-          city: 'Boise',
-          state: 'ID'
-        },
+      email: 'Shanell@gmail.com',
         isActive: true,
         registered: new Date('01/25/2018 10:30:00'),
         hide: true
@@ -78,7 +59,8 @@ export class UsersComponent implements OnInit {
   }
 
   //add user from from input
-  addUser(){
+
+  onSubmit(e){
     this.user.isActive = true;
     this.user.registered = new Date();
     this.users.unshift(this.user);
@@ -86,16 +68,8 @@ export class UsersComponent implements OnInit {
     this.user = {
       firstName: '',
       lastName: '',
-      age: null,
-      address: {
-        street: '',
-        city: '',
-        state: ''
-      }
+      email: ''
     }
-  }
-
-  onSubmit(e){
     e.preventDefault();
   }
 
