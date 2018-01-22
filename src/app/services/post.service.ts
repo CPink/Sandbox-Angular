@@ -32,6 +32,13 @@ postUrl: string = 'https://jsonplaceholder.typicode.com/posts';
     return this._http.put<Post>(url, post, httpOptions);
   }
 
+  getPost(id: number ) :Observable<Post> {
+    const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
+
+    return this._http.get<Post>(url);
+  }
+
+
   //DELETE request to https://jsonplaceholder.typicode.com/posts
   removePost(post: Post | number) :Observable<Post> {
     const id = typeof post === 'number' ? post : post.id;
@@ -39,4 +46,5 @@ postUrl: string = 'https://jsonplaceholder.typicode.com/posts';
     return this._http.delete<Post>(url, httpOptions);
   }
 
+  
 }
