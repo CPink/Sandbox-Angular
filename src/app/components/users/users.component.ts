@@ -59,7 +59,7 @@ export class UsersComponent implements OnInit {
     ];
   }
 
-  //add user from from input
+  //add user from form input
 
   onSubmit({value, valid}: {value: User, valid: boolean}){
     if(!valid){

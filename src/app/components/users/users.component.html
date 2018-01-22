@@ -45,12 +45,13 @@
             #userEmail="ngModel"
             email
             required
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
             [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
             type="email" 
             [(ngModel)]="user.email" 
             class="form-control mb-3" 
             name="email">
-            <div class="invalid-feedback">
+            <div [hidden]="!userEamil.errors?.pattern" class="invalid-feedback">
                 Must be a valid Email
             </div>
           </div>
